@@ -6,17 +6,6 @@ from eth_account import Account
 # Enable HD wallet features
 Account.enable_unaudited_hdwallet_features()
 
-# Decryption function: solves 2x² + 3x + (5 - y) = 0
-def quadratic_decrypt(y, a=2, b=3, c=5):
-    discriminant = b * b - 4 * a * (c - y)
-    if discriminant < 0:
-        raise ValueError("No real roots")
-    x1 = (-b + math.sqrt(discriminant)) / (2 * a)
-    x2 = (-b - math.sqrt(discriminant)) / (2 * a)
-    for x in [x1, x2]:
-        if 32 <= round(x) <= 126:
-            return round(x)
-    raise ValueError("No valid ASCII root")
 
 # Convert ASCII values to string
 def ascii_to_mnemonic(ascii_values):
